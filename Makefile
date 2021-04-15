@@ -22,3 +22,5 @@ all: $(TARGETS)
 
 clean:
 	rm -v $(TARGETS)
+
+include ta.mk
