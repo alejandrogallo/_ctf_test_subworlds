@@ -8,12 +8,12 @@ TA_CMAKE = $(TA_PATH)/CMakeLists.txt
 
 $(TA_CMAKE):
 	mkdir -p $(@D)
-	git clone $(TA_REPO) $(@D)
+	git clone -b fix/eigen-hash $(TA_REPO) $(@D)
 
 $(TA_LIB): $(TA_CMAKE)
 	cd $(<D); cmake -B $(TA_BUILD) -D CMAKE_INSTALL_PREFIX=$(TA_BUILT)
-	cd $(TA_BUILD); make -j 8
-	cd $(TA_BUILD); make install
+	cd $(TA_BUILD); $(MAKE)
+	cd $(TA_BUILD); $(MAKE)
 
 ta: $(TA_LIB)
 
